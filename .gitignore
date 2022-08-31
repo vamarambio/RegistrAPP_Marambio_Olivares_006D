@@ -1,0 +1,47 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+*~
+*.sw[mnpcod]
+.tmp
+*.tmp
+*.tmp.*
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+UserInterfaceState.xcuserstate
+$RECYCLE.BIN/
+
+*.log
+log.txt
+npm-debug.log*
+
+/.angular
+/.idea
+/.ionic
+/.sass-cache
+/.sourcemaps
+/.versions
+/.vscode
+/coverage
+/dist
+/e2e
+/node_modules
+/platforms
+/plugins
+/www
+
+# Base Ionic Angular files
+.browserslistrc
+.editorconfig
+.eslintrc.json
+angular.json
+capacitor.config.ts
+ionic.config.json
+karma.conf.js
+package-lock.json
+package.json
+tsconfig.app.json
+tsconfig.json
+tsconfig.spec.json
