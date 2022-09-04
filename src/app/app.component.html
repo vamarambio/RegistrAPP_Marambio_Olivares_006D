@@ -1,3 +1,22 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu contentId="main" menuId="first" side="start" type="overlay">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <ion-label>Páginas de Profesor</ion-label>
+        <ion-menu-toggle *ngFor="let p of pages">
+          <ion-item [routerLink]="p.redirect" detail="true">
+            <ion-icon slot="start" name="p.icon" color="primary"></ion-icon>
+            {{ p.name }}
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>
