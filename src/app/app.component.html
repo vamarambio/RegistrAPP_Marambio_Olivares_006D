@@ -1,5 +1,4 @@
 <ion-app>
-
   <ion-menu contentId="main" menuId="first" side="start">
     <ion-header>
       <ion-toolbar>
@@ -8,14 +7,26 @@
     </ion-header>
 
     <ion-content>
-       <ion-list>
-          <ion-menu-toggle *ngFor="let c of componentes">
-              <ion-item [routerLink]="c.redirecTo" detail=true>
-                <ion-icon slot="start" [name]="c.icon" color="primary"></ion-icon>
-                {{c.name}}
-              </ion-item>
-          </ion-menu-toggle>
-        </ion-list> 
+      <ion-list>
+        <ion-item>
+          <ion-label>Páginas Estudiante</ion-label>
+        </ion-item>
+        <ion-menu-toggle *ngFor="let p of sPages">
+          <ion-item [routerLink]="p.redirect" detail=true>
+            <ion-icon slot="start" [name]="p.icon" color="primary"></ion-icon>
+            {{ p.name }}
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-item>
+          <ion-label>Páginas Profesor</ion-label>
+        </ion-item>
+        <ion-menu-toggle *ngFor="let p of tPages">
+          <ion-item [routerLink]="p.redirect" detail=true>
+            <ion-icon slot="start" [name]="p.icon" color="primary"></ion-icon>
+            {{ p.name }}
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list> 
     </ion-content>
   </ion-menu>
 

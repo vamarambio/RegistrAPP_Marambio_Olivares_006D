@@ -7,7 +7,7 @@
     </ion-buttons>
     <ion-title>Cursos</ion-title>
     <ion-buttons slot="end">
-      <ion-back-button></ion-back-button>
+      <ion-back-button defaultHref="/" text="" color="primary" mode="ios"> </ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -21,7 +21,7 @@
       <p>[Placeholder] Estudiantes: 5</p>
       <p>[Placeholder] Clases realizadas: 10</p>
     </ion-card-content>
-    <ion-button *ngFor="let p of pages" [routerLink]="p.redirect" expand="block" fill="clear" shape="round">
+    <ion-button *ngFor="let p of pages" [routerLink]="p.redirect" class="btn" expand="block">
       Ver Curso
     </ion-button>
   </ion-card>

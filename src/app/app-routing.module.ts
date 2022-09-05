@@ -7,10 +7,28 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  // Rutas universales
   {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
+  {
+    path: 'create-user',
+    loadChildren: () => import('./pages/create-user/create-user.module').then( m => m.CreateUserPageModule)
+  },
+  {
+    path: 'edit-profile',
+    loadChildren: () => import('./pages/edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+  },
+  {
+    path: 'r-password',
+    loadChildren: () => import('./pages/r-password/r-password.module').then( m => m.RPasswordPageModule)
+  },
+  {
+    path: 'about-us',
+    loadChildren: () => import('./pages/about-us/about-us.module').then( m => m.AboutUsPageModule)
+  },
+  // Rutas de estudiante
   {
     path: 's-profile',
     loadChildren: () => import('./pages/student/s-profile/s-profile.module').then( m => m.SProfilePageModule)
@@ -23,25 +41,14 @@ const routes: Routes = [
     path: 'qr',
     loadChildren: () => import('./pages/student/qr/qr.module').then( m => m.QrPageModule)
   },
+  // Rutas de profesor
   {
-    path: 'edit-profile',
-    loadChildren: () => import('./pages/edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
-  },
-  {
-    path: 'about-us',
-    loadChildren: () => import('./pages/about-us/about-us.module').then( m => m.AboutUsPageModule)
-  },
-  {
-    path: 'r-password',
-    loadChildren: () => import('./pages/r-password/r-password.module').then( m => m.RPasswordPageModule)
-  },
-  {
-    path: 'courses',
-    loadChildren: () => import('./pages/teacher/courses/courses.module').then( m => m.CoursesPageModule)
-  },
-  {
-    path: 'profile',
+    path: 't-profile',
     loadChildren: () => import('./pages/teacher/profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 't-courses',
+    loadChildren: () => import('./pages/teacher/courses/courses.module').then( m => m.CoursesPageModule)
   },
   {
     path: 'course',
@@ -51,15 +58,6 @@ const routes: Routes = [
     path: 'class',
     loadChildren: () => import('./pages/teacher/class/class.module').then( m => m.ClassPageModule)
   },
-
-
-
-
-
-
-
-
-
 ];
 
 @NgModule({

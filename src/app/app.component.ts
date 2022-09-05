@@ -14,54 +14,56 @@ interface Pages{
 export class AppComponent {
   constructor() {}
 
-
-  componentes: Componente[] = [ 
+  sPages: Pages[] = [ 
     {
       icon: 'person-outline',
       name: 'Inicio',
-      redirecTo: '/s-profile',
+      redirect: '/s-profile',
     },
     {
       icon: 'time-outline',
-      name: 'Asistencia cursos',
-      redirecTo: '/s-courses',
+      name: 'Mis Asistencias',
+      redirect: '/s-courses',
     },
     {
       icon: 'scan-outline',
       name: 'Escanear QR',
-      redirecTo:'/qr',
+      redirect:'/qr',
     },
     {
       // icon: 'information-circle-outline',
       icon: 'sparkles-outline',
-      name: 'Sobre Nosotr@s',
-      redirecTo:'/about-us',
+      name: 'Sobre Nosotros',
+      redirect:'/about-us',
     },
     {
       icon: 'exit-outline',
       name: 'Salir',
-      redirecTo:'/home',
-    },
-  ];
-
-  pages: Pages[] = [
-    {
-      icon: 'home-outline',
-      name: 'Inicio',
-      redirect: 'home',
+      redirect:'/home',
     },
   ];
 
   tPages: Pages[] = [
     {
       icon: 'person-outline',
-      name: 'Perfil',
-      redirect: 'profile',
+      name: 'Inicio',
+      redirect: '/t-profile',
     },
     {
       icon: 'briefcase-outline',
-      name: 'Cursos',
-      redirect: 'courses',
+      name: 'Mis Cursos',
+      redirect: '/t-courses',
+    },
+    {
+      // icon: 'information-circle-outline',
+      icon: 'sparkles-outline',
+      name: 'Sobre Nosotros',
+      redirect:'/about-us',
+    },
+    {
+      icon: 'exit-outline',
+      name: 'Salir',
+      redirect:'/home',
     },
   ];
 }
