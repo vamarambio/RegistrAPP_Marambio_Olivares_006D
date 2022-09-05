@@ -14,6 +14,36 @@ interface Pages{
 export class AppComponent {
   constructor() {}
 
+
+  componentes: Componente[] = [ 
+    {
+      icon: 'person-outline',
+      name: 'Inicio',
+      redirecTo: '/s-profile',
+    },
+    {
+      icon: 'time-outline',
+      name: 'Asistencia cursos',
+      redirecTo: '/s-courses',
+    },
+    {
+      icon: 'scan-outline',
+      name: 'Escanear QR',
+      redirecTo:'/qr',
+    },
+    {
+      // icon: 'information-circle-outline',
+      icon: 'sparkles-outline',
+      name: 'Sobre Nosotr@s',
+      redirecTo:'/about-us',
+    },
+    {
+      icon: 'exit-outline',
+      name: 'Salir',
+      redirecTo:'/home',
+    },
+  ];
+
   pages: Pages[] = [
     {
       icon: 'home-outline',
