@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular'; 
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-profile',
@@ -8,7 +9,7 @@ import { MenuController } from '@ionic/angular';
 })
 export class EditProfilePage implements OnInit {
 
-  constructor(private menuController: MenuController) { }
+  constructor(private alertController: AlertController, private menuController: MenuController) { }
   
   mostrarMenu(){
     this.menuController.open('first');
@@ -16,4 +17,26 @@ export class EditProfilePage implements OnInit {
   
   ngOnInit() {
   }
+
+  async input() {
+    const alert = await this.alertController.create({
+      header: 'Cambiar contraseña',
+      buttons: ['OK'],
+      inputs: [
+        {
+          placeholder: 'Contraseña anterior',
+        },
+        {
+          placeholder: 'Contraseña nueva',
+        },
+        {
+          placeholder: 'Repetir contraseña nueva',
+        },
+
+      ],
+    });
+
+    await alert.present();
+  }
+
 }

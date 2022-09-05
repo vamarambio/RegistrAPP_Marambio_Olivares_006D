@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 's-profile',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -30,7 +30,17 @@ const routes: Routes = [
   {
     path: 'about-us',
     loadChildren: () => import('./pages/about-us/about-us.module').then( m => m.AboutUsPageModule)
+  },  {
+    path: 'r-password',
+    loadChildren: () => import('./pages/r-password/r-password.module').then( m => m.RPasswordPageModule)
   },
+  {
+    path: 'create-user',
+    loadChildren: () => import('./pages/create-user/create-user.module').then( m => m.CreateUserPageModule)
+  },
+
+
+
 
 
 
