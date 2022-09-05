@@ -16,6 +16,14 @@ export class AppComponent {
 
   pages: Pages[] = [
     {
+      icon: 'home-outline',
+      name: 'Inicio',
+      redirect: 'home',
+    },
+  ];
+
+  tPages: Pages[] = [
+    {
       icon: 'person-outline',
       name: 'Perfil',
       redirect: 'profile',

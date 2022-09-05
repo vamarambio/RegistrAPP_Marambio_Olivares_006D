@@ -5,7 +5,7 @@
         <ion-icon slot="icon-only" name="menu-outline" color="primary"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Curso</ion-title>
+    <ion-title>[PH] CUR1234</ion-title>
     <ion-buttons slot="end">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -13,5 +13,21 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-button *ngFor="let p of pages" [routerLink]="p.redirect" expand="block" fill="clear" shape="round">
+    Iniciar Clase
+  </ion-button>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>[PH] CUR1234 - Nombre Curso - 001D</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>Estudiante 1 - Asistencia 10/10</ion-item>
+        <ion-item>Estudiante 2 - Asistencia 8/10</ion-item>
+        <ion-item>Estudiante 3 - Asistencia 10/10</ion-item>
+        <ion-item>Estudiante 4 - Asistencia 9/10</ion-item>
+        <ion-item>Estudiante 5 - Asistencia 5/10</ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -5,7 +5,7 @@
         <ion-icon slot="icon-only" name="menu-outline" color="primary"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Perfil</ion-title>
+    <ion-title>[PH] Clase 11</ion-title>
     <ion-buttons slot="end">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -14,11 +14,14 @@
 
 <ion-content>
   <ion-card>
-    <ion-avatar>
-      <img src="assets/placeholders/PlaceholderProfilePicture.png"/>
-    </ion-avatar>
-    <ion-button (click)="onClick()" expand="block" fill="clear" shape="round">
-      Editar Perfil
-    </ion-button>
+    <icon-card>
+      <img src="assets/placeholders/PlaceholderQR.png" class="ion-padding">
+    </icon-card>
+    <ion-card-header>
+      <ion-card-subtitle>Recuerda proyectar el codigo QR antes de terminar la clase.</ion-card-subtitle>
+    </ion-card-header>
+    <ion-list>
+      <ion-item>Escaneos: 0/5</ion-item>
+    </ion-list>
   </ion-card>
 </ion-content>

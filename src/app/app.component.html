@@ -8,8 +8,14 @@
 
     <ion-content>
       <ion-list>
-        <ion-label>Páginas de Profesor</ion-label>
         <ion-menu-toggle *ngFor="let p of pages">
+          <ion-item [routerLink]="p.redirect" detail="true">
+            <ion-icon slot="start" name="p.icon" color="primary"></ion-icon>
+            {{ p.name }}
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-label>Páginas de Profesor</ion-label>
+        <ion-menu-toggle *ngFor="let p of tPages">
           <ion-item [routerLink]="p.redirect" detail="true">
             <ion-icon slot="start" name="p.icon" color="primary"></ion-icon>
             {{ p.name }}

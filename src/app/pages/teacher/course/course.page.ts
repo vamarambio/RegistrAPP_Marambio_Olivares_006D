@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 
+interface Pages{
+  name: string;
+  redirect: string;
+}
+
 @Component({
   selector: 'app-course',
   templateUrl: './course.page.html',
@@ -16,4 +21,11 @@ export class CoursePage implements OnInit {
   showMenu(){
     this.menuController.open("first");
   }
+
+  pages: Pages[] = [
+    {
+      name: 'Clase',
+      redirect: '/class',
+    },
+  ];
 }

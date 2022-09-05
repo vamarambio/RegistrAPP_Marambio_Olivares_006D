@@ -15,13 +15,14 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      <ion-card-title>[PH] Nombre Curso</ion-card-title>
+      <ion-card-title>[PH] CUR1234 - Nombre Curso - 001D</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      Awesome content
+      <p>[Placeholder] Estudiantes: 5</p>
+      <p>[Placeholder] Clases realizadas: 10</p>
     </ion-card-content>
-    <ion-item href="course">
-      <ion-label>Ver Curso</ion-label>
-    </ion-item>
+    <ion-button *ngFor="let p of pages" [routerLink]="p.redirect" expand="block" fill="clear" shape="round">
+      Ver Curso
+    </ion-button>
   </ion-card>
 </ion-content>
