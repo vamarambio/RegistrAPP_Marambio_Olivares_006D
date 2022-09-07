@@ -9,4 +9,4 @@ ionic start [name] blank
 
 - Clonar el repositorio en el mismo directorio donde se encuentra `/[name]`.
 - Eliminar la carpeta `src` dentro de `/[name]`.
-- Renombar `/[name]` al nombre del repositorio.
+- Mover todos los contenidos de `/[name]` en el directorio del repositorio.
