@@ -1,13 +1,14 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>QR</ion-title>
-
     <ion-buttons slot="start">
       <ion-button (click)="mostrarMenu()">
         <ion-icon slot="icon-only" name="menu-outline" color="primary"></ion-icon>
       </ion-button>
     </ion-buttons>
-    
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/" text="" color="primary" mode="ios"> </ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

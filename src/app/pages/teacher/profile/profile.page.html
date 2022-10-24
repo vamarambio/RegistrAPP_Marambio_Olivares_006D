@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Inicio</ion-title>
     <ion-buttons slot="start">
-      <ion-button (click)="mostrarMenu()">
+      <ion-button (click)="showMenu()">
         <ion-icon slot="icon-only" name="menu-outline" color="primary"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -10,7 +10,6 @@
 </ion-header>
 
 <ion-content>
-
   <ion-item>
     <ion-avatar slot="start">
       <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/demos/api/avatar/avatar.svg"/>
@@ -31,12 +30,7 @@
   <ion-button routerLink="/edit-profile" expand="block" fill="outline">
     <span class="texto-boton">Editar perfil</span>
   </ion-button>
-  <ion-button routerLink="/qr" expand="block" fill="outline">
-    <span class="texto-boton">Escanear código QR</span> 
+  <ion-button routerLink="/t-courses" expand="block" fill="outline">
+    <span class="texto-boton">Ver mis cursos</span>
   </ion-button>
-  <ion-button routerLink="/s-courses" expand="block" fill="outline">
-    <span class="texto-boton">Ver asistencia cursos</span>
-  </ion-button>
-
-
 </ion-content>

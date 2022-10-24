@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="showMenu()">
+        <ion-icon slot="icon-only" name="menu-outline" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Cursos</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/" text="" color="primary" mode="ios"> </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>[PH] CUR1234 - Nombre Curso - 001D</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>[Placeholder] Estudiantes: 5</p>
+      <p>[Placeholder] Clases realizadas: 10</p>
+    </ion-card-content>
+    <ion-button *ngFor="let p of pages" [routerLink]="p.redirect" class="btn" expand="block">
+      Ver Curso
+    </ion-button>
+  </ion-card>
+</ion-content>

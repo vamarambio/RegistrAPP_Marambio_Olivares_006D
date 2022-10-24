@@ -1,44 +1,45 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>RegistrAPP</ion-title>
-
+  <ion-toolbar color="tertiary">
+    <ion-title class="titulo">RegistrAPP</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/" text="" color="primary" mode="ios"> </ion-back-button>
     </ion-buttons>
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <form #formulario="ngForm" (ngSubmit)="onSubmit()">
-    
+  <form [formGroup]="formularioRegistro" (keyup.enter)="CrearUsuario()">
     <ion-list-header> <h2>Crear Usuario</h2> </ion-list-header>
-    
+
     <ion-item class="input">
-      <ion-input type="text" placeholder="Nombre" name="name" [(ngModel)]= "user_create.name" required></ion-input>
+      <ion-input type="text" formControlName="nombre" placeholder="Nombre"></ion-input>
     </ion-item>
 
     <ion-item class="input">
-      <ion-input type="email" placeholder="Correo" name="email" [(ngModel)]= "user_create.email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required></ion-input>
+      <ion-input type="email" formControlName="correo" placeholder="Correo" pattern="^([a-zA-Z0-9_\-\.]+)@(duocuc|profesor\.duoc)\.cl$"></ion-input>
     </ion-item>
 
     <ion-item class="input">
-      <ion-input type="password" placeholder="Contraseña" name="password" [(ngModel)]= "user_create.password" required></ion-input>
+      <ion-input type="password" formControlName="contrasena" placeholder="Contraseña"></ion-input>
     </ion-item>
 
     <ion-item class="input">
-      <ion-label>Tipo de Cuenta:</ion-label>
-      <ion-select placeholder="Tipo" name="acc_type" value="" [(ngModel)]="user_create.acc_type" required>
-        <ion-select-option value="student">Estudiante</ion-select-option>
-        <ion-select-option value="teacher">Docente</ion-select-option>
-      </ion-select>
+      <ion-input type="password" formControlName="repcontrasena" placeholder="Repetir Contraseña"></ion-input>
     </ion-item>
-    
-    
-    <ion-button type="submit" class="btn" expand="block" routerLink="/home">Crear</ion-button>
-</form>
 
-<ion-button routerLink="/about-us" class="about-btn">Sobre Nosotr@s</ion-button>
+  </form>
+  
+  <ion-button (click)="CrearUsuario()" class="btn" expand="block">
+    Registrar
+  </ion-button>
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="end">
+  <ion-button [routerLink] = "['/about-us']" >Sobre Nosotr@s</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
