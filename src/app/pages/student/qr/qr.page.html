@@ -12,6 +12,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [style.visibility]="content_visibility">
+  <ion-button (click)="startScan()" expand="block" fill="clear" shape="round">
+    Escanear QR
+  </ion-button>
+  <ion-item *ngIf="scannedResult">
+    <ion-label>Resultado: {{scannedResult}}</ion-label>
+  </ion-item>
 </ion-content>
