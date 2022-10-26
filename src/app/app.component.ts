@@ -59,6 +59,11 @@ export class AppComponent {
       redirect: '/t-courses',
     },
     {
+      icon: 'calendar-outline',
+      name: 'Calendario',
+      redirect: '/calendar',
+    },
+    {
       // icon: 'information-circle-outline',
       icon: 'sparkles-outline',
       name: 'Sobre Nosotros',

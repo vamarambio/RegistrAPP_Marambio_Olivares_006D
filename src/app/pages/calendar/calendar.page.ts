@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { CalendarService } from '../../../services/calendar.service';
-import { Holiday } from '../../../interfaces/interfaces';
+import { CalendarService } from '../../services/calendar.service';
+import { Holiday } from '../../interfaces/interfaces';
 
 
 @Component({

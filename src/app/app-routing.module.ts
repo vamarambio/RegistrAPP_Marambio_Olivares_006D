@@ -25,6 +25,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/r-password/r-password.module').then( m => m.RPasswordPageModule)
   },
   {
+    path: 'calendar',
+    loadChildren: () => import('./pages/calendar/calendar.module').then( m => m.CalendarPageModule)
+  },
+  {
     path: 'about-us',
     loadChildren: () => import('./pages/about-us/about-us.module').then( m => m.AboutUsPageModule)
   },
@@ -40,10 +44,6 @@ const routes: Routes = [
   {
     path: 'qr',
     loadChildren: () => import('./pages/student/qr/qr.module').then( m => m.QrPageModule)
-  },
-  {
-    path: 'calendar',
-    loadChildren: () => import('./pages/student/calendar/calendar.module').then( m => m.CalendarPageModule)
   },
   // Rutas de profesor
   {
