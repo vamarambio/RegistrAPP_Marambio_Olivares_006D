@@ -74,8 +74,4 @@ export class AppComponent {
     localStorage.clear();
   }
 
-  // borrar
-  LS(){
-    console.log(localStorage);
-  }
 }
