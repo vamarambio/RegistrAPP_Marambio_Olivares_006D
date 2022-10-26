@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar></ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <img src="assets/logo.png">
+  
+  <form [formGroup]="formularioLogin" (keyup.enter)="Ingresar()">
+    <ion-list-header> <h2>Ingresar</h2> </ion-list-header>
+
+    <ion-item class="input">
+      <ion-input type="email" formControlName="correo" placeholder="Correo" pattern="^([a-zA-Z0-9_\-\.]+)@(duocuc|profesor\.duoc)\.cl$"></ion-input>
+    </ion-item>
+    
+    <ion-item class="input">
+      <ion-input type="password" formControlName="contrasena" placeholder="Contraseña"></ion-input>
+    </ion-item>
+  </form>
+
+  <ion-button routerLink="/r-password" color="tertiary" fill="clear" expand="block" size="small">
+    <span class="restablecer">Restablecer Contraseña</span>
+  </ion-button>
+
+  <ion-button (click)="Ingresar()" class="btn" expand="block">
+    Confirmar
+  </ion-button>
+  
+  <ion-button routerLink="/create-user" class="btn" expand="block">
+    Crear Usuario
+  </ion-button>
+
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="end">
+  <ion-button [routerLink] = "['/about-us']">Sobre Nosotr@s</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

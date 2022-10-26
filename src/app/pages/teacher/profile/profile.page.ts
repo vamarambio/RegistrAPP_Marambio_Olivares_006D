@@ -8,6 +8,9 @@ import { MenuController } from '@ionic/angular';
 })
 export class ProfilePage implements OnInit {
 
+  name: any = localStorage.getItem("name");
+  email: any = localStorage.getItem("email");
+  
   constructor(private menuController: MenuController) { }
 
   ngOnInit() {

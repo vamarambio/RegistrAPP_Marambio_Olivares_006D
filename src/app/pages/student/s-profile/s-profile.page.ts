@@ -7,6 +7,9 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./s-profile.page.scss'],
 })
 export class SProfilePage implements OnInit {
+  
+  name: any = localStorage.getItem("name");
+  email: any = localStorage.getItem("email");
 
   constructor(private menuController: MenuController) { }
 
@@ -15,5 +18,6 @@ export class SProfilePage implements OnInit {
 
   mostrarMenu(){
     this.menuController.open('first');
+    
   } 
 }

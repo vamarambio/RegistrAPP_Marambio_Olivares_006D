@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 interface Pages{
   icon: string;
@@ -12,7 +13,8 @@ interface Pages{
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  
+  menuPages: Pages[] = [];
 
   sPages: Pages[] = [ 
     {
@@ -31,15 +33,9 @@ export class AppComponent {
       redirect:'/qr',
     },
     {
-      // icon: 'information-circle-outline',
       icon: 'sparkles-outline',
       name: 'Sobre Nosotros',
       redirect:'/about-us',
-    },
-    {
-      icon: 'exit-outline',
-      name: 'Salir',
-      redirect:'/home',
     },
   ];
 
@@ -55,15 +51,27 @@ export class AppComponent {
       redirect: '/t-courses',
     },
     {
-      // icon: 'information-circle-outline',
       icon: 'sparkles-outline',
       name: 'Sobre Nosotros',
       redirect:'/about-us',
     },
-    {
-      icon: 'exit-outline',
-      name: 'Salir',
-      redirect:'/home',
-    },
   ];
+
+  constructor(private navController: NavController) {
+    this.setMenuPages(); 
+  }
+
+  setMenuPages(){
+    if (localStorage.getItem("student")) {
+      this.menuPages = this.sPages;
+
+    } else if (localStorage.getItem("teacher")){
+      this.menuPages = this.tPages;
+    }
+  }
+
+  Salir(){
+    localStorage.clear();
+  }
+
 }

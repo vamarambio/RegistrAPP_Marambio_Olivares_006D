@@ -8,24 +8,19 @@
 
     <ion-content>
       <ion-list>
-        <ion-item>
-          <ion-label>Páginas Estudiante</ion-label>
-        </ion-item>
-        <ion-menu-toggle *ngFor="let p of sPages">
+
+        <ion-menu-toggle *ngFor="let p of menuPages">
           <ion-item [routerLink]="p.redirect" detail=true>
             <ion-icon slot="start" [name]="p.icon" color="primary"></ion-icon>
             {{ p.name }}
           </ion-item>
         </ion-menu-toggle>
-        <ion-item>
-          <ion-label>Páginas Profesor</ion-label>
+         
+        <ion-item routerLink="/login" (click)="Salir()">
+          <ion-icon slot="start" name="exit-outline" color="primary"></ion-icon>
+          Salir
         </ion-item>
-        <ion-menu-toggle *ngFor="let p of tPages">
-          <ion-item [routerLink]="p.redirect" detail=true>
-            <ion-icon slot="start" [name]="p.icon" color="primary"></ion-icon>
-            {{ p.name }}
-          </ion-item>
-        </ion-menu-toggle>
+
       </ion-list> 
     </ion-content>
   </ion-menu>
