@@ -31,7 +31,11 @@ export class AppComponent {
       redirect:'/qr',
     },
     {
-      // icon: 'information-circle-outline',
+      icon: 'calendar-outline',
+      name: 'Calendario',
+      redirect: '/calendar',
+    },
+    {
       icon: 'sparkles-outline',
       name: 'Sobre Nosotros',
       redirect:'/about-us',

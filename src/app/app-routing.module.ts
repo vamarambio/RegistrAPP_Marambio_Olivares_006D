@@ -41,6 +41,10 @@ const routes: Routes = [
     path: 'qr',
     loadChildren: () => import('./pages/student/qr/qr.module').then( m => m.QrPageModule)
   },
+  {
+    path: 'calendar',
+    loadChildren: () => import('./pages/student/calendar/calendar.module').then( m => m.CalendarPageModule)
+  },
   // Rutas de profesor
   {
     path: 't-profile',
