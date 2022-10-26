@@ -31,6 +31,10 @@ const routes: Routes = [
     canActivate: [NoIngresadoGuard]
   },
   {
+    path: 'calendar',
+    loadChildren: () => import('./pages/calendar/calendar.module').then( m => m.CalendarPageModule)
+  },
+  {
     path: 'about-us',
     loadChildren: () => import('./pages/about-us/about-us.module').then( m => m.AboutUsPageModule),
   },
