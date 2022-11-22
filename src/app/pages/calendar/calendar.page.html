@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="showMenu()">
+        <ion-icon slot="icon-only" name="menu-outline" color="primary"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Calendario</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/" text="" color="primary" mode="ios"> </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+        *ngFor="let holiday of holidays; let i=index">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{holiday.observed}}</ion-card-subtitle>
+            <ion-card-title>{{holiday.name}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

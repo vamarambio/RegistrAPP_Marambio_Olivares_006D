@@ -33,6 +33,11 @@ export class AppComponent {
       redirect:'/qr',
     },
     {
+      icon: 'calendar-outline',
+      name: 'Calendario',
+      redirect: '/calendar',
+    },
+    {
       icon: 'sparkles-outline',
       name: 'Sobre Nosotros',
       redirect:'/about-us',
@@ -51,6 +56,12 @@ export class AppComponent {
       redirect: '/t-courses',
     },
     {
+      icon: 'calendar-outline',
+      name: 'Calendario',
+      redirect: '/calendar',
+    },
+    {
+      // icon: 'information-circle-outline',
       icon: 'sparkles-outline',
       name: 'Sobre Nosotros',
       redirect:'/about-us',
