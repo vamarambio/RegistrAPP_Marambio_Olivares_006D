@@ -1,3 +1,8 @@
+export interface QrResponse {
+    code: string;
+    name: string;
+}
+
 export interface ResponseHolidays {
     status: string;
     totalResults: number;

@@ -14,12 +14,26 @@
 
 <ion-content>
   <ion-card>
-    <img src="assets/placeholders/PlaceholderQR.png" class="ion-padding">
+    <!-- <img src="assets/placeholders/PlaceholderQR.png" class="ion-padding"> -->
     <ion-card-header>
       <ion-card-subtitle>Recuerda proyectar el codigo QR antes de terminar la clase.</ion-card-subtitle>
     </ion-card-header>
+    <ion-card-content>
+      <ion-button 
+            expand="block" 
+            class="ion-margin" 
+            (click)="generateQR()">
+            Generar QR de clase  
+        </ion-button>
+        <qrcode 
+          [qrdata]="qrCodeString" 
+          [width]="268"
+          [margin]="2" 
+          [errorCorrectionLevel]="'M'">
+        </qrcode>
+    </ion-card-content>
     <ion-list>
-      <ion-item>Escaneos: 0/5</ion-item>
+      <ion-item>Escaneos: {{ studentsInClass }}</ion-item>
     </ion-list>
   </ion-card>
 </ion-content>

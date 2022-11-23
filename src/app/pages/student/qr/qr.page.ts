@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 import { MenuController } from '@ionic/angular';
+// import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 
 @Component({
   selector: 'app-qr',
@@ -12,7 +13,8 @@ export class QrPage implements OnInit, OnDestroy {
   scannedResult: any;
   content_visibility = '';
 
-  constructor(private menuController: MenuController) { }
+  constructor(private menuController: MenuController
+              /* private http: HttpClient */) { }
 
   ngOnInit() {
   }
@@ -52,6 +54,7 @@ export class QrPage implements OnInit, OnDestroy {
       if(result?.hasContent) {
         this.scannedResult = result.content;
         console.log(this.scannedResult);
+        // this.sendScan();
       }
     } catch(e) {
       console.log(e);
@@ -69,4 +72,8 @@ export class QrPage implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.stopScan();
   }
+
+  // async sendScan(){
+  //   this.http.post("", {data: {'code': this.scannedResult, 'name': localStorage.name}}, {headers: new HttpHeaders({'token': ""})});
+  // }
 }
