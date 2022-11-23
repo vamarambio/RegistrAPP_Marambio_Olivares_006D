@@ -10,11 +10,11 @@
     <ion-list-header> <h2>Ingresar</h2> </ion-list-header>
 
     <ion-item class="input">
-      <ion-input type="email" formControlName="correo" placeholder="Correo" pattern="^([a-zA-Z0-9_\-\.]+)@(duocuc|profesor\.duoc)\.cl$"></ion-input>
+      <ion-input id="email-field-login" type="email" formControlName="correo" placeholder="Correo" pattern="^([a-zA-Z0-9_\-\.]+)@(duocuc|profesor\.duoc)\.cl$"></ion-input>
     </ion-item>
     
     <ion-item class="input">
-      <ion-input type="password" formControlName="contrasena" placeholder="Contraseña"></ion-input>
+      <ion-input id="password-field-login" type="password" formControlName="contrasena" placeholder="Contraseña"></ion-input>
     </ion-item>
   </form>
 
@@ -22,11 +22,11 @@
     <span class="restablecer">Restablecer Contraseña</span>
   </ion-button>
 
-  <ion-button (click)="Ingresar()" class="btn" expand="block">
+  <ion-button id="confirmar-button-login" (click)="Ingresar()" class="btn" expand="block">
     Confirmar
   </ion-button>
   
-  <ion-button routerLink="/create-user" class="btn" expand="block">
+  <ion-button routerLink="/create-user" id="createUser-button-login" class="btn" expand="block">
     Crear Usuario
   </ion-button>
 

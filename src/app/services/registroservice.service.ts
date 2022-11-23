@@ -15,7 +15,7 @@ const USERS_KEY = 'my-usuarios';
 })
 export class RegistroserviceService {
 
-  private _storage: Storage;
+  // private _storage: Storage;
 
   constructor(private storage: Storage) { 
     this.init();
@@ -23,7 +23,7 @@ export class RegistroserviceService {
 
   async init() {
     const storage = await this.storage.create();
-    this._storage = storage;
+    // this._storage = storage;
   }
 
   async addUser(dato: Usuario):Promise<any> {

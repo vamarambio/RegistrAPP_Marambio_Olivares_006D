@@ -60,7 +60,7 @@ export class EditProfilePage implements OnInit {
     await alert.present();
   }
 
-  async alertMsg(msg) {
+  async alertMsg(msg: string) {
     const alert = await this.alertController.create({
       header: msg,
       buttons: ['Aceptar']

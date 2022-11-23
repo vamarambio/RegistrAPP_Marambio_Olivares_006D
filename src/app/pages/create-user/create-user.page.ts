@@ -12,6 +12,7 @@ export class CreateUserPage implements OnInit {
 
   formularioRegistro: FormGroup; 
   newUsuario: Usuario = <Usuario>{};
+  usuarios: Usuario[] =[]; 
 
   constructor(private alertController: AlertController,
               private registroService: RegistroserviceService,
@@ -30,6 +31,8 @@ export class CreateUserPage implements OnInit {
 
   async CrearUsuario(){
     var form = this.formularioRegistro.value;
+    var existe = 0;
+
     if (this.formularioRegistro.invalid) {
       this.alertMsg('Completar todos los campos');
 
@@ -39,10 +42,31 @@ export class CreateUserPage implements OnInit {
         this.newUsuario.userEmail = form.correo;
         this.newUsuario.userPassword = form.contrasena;
         this.newUsuario.rPassword = form.repcontrasena;
-        this.registroService.addUser(this.newUsuario).then(dato=>{ 
-          this.newUsuario = <Usuario>{};
-        });
-        this.navController.navigateRoot('/login');
+
+        this.registroService.getUsers().then(datos=>{
+          this.usuarios = datos;
+          if (!datos || datos.length == 0) {
+            this.registroService.addUser(this.newUsuario).then(dato=>{ 
+              this.newUsuario = <Usuario>{};
+            });
+            
+          } else {
+            for (let obj of this.usuarios) {
+              if (this.newUsuario.userEmail.toLowerCase() == obj.userEmail.toLowerCase()) {
+                existe = 1;
+              }
+            }
+            if (existe == 1) {
+              this.alertMsg("Este correo ya existe")
+
+            } else {
+              this.registroService.addUser(this.newUsuario).then(dato=>{ 
+                this.newUsuario = <Usuario>{};
+                this.navController.navigateRoot('/login');
+              });
+            }
+          }
+        })
         
       } else {
         this.alertMsg('Las contraseñas no coinciden');
@@ -50,7 +74,7 @@ export class CreateUserPage implements OnInit {
     }
   }
 
-  async alertMsg(msg){
+  async alertMsg(msg: string){
     const alert = await this.alertController.create({ 
       header: msg,
       buttons: ['Aceptar']

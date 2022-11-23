@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
           return null;
       }
       for (let obj of this.usuarios) {
-        if (f.correo == obj.userEmail && f.contrasena == obj.userPassword){
+        if (f.correo.toLowerCase() == obj.userEmail.toLowerCase() && f.contrasena == obj.userPassword){
           a = 1;
           
           if(this.isTeacher(obj.userEmail)) {
@@ -56,7 +56,7 @@ export class LoginPage implements OnInit {
       if(a == 0) {
         this.alertMsg();
       }
-    })
+    });
   } 
 
   isTeacher(email: string) {    
