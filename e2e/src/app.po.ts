@@ -5,6 +5,10 @@ export class AppPage {
   navigateTo() {
     return browser.get('/');
   }
+
+  tiempo(){
+    return 3000;
+  }
   
   clickBoton(id: string){
     var el = element(by.id(id));
