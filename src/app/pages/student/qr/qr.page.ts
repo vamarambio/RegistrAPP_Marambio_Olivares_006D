@@ -11,6 +11,7 @@ import { BarcodeScanner } from '@capacitor-community/barcode-scanner';
 export class QrPage implements OnInit, OnDestroy {
 
   scannedResult: any;
+  scannedCourse: any;
   content_visibility = '';
   email: any = localStorage.getItem("email");
 
@@ -63,6 +64,7 @@ export class QrPage implements OnInit, OnDestroy {
       this.content_visibility = '';
       if(result?.hasContent) {
         this.scannedResult = result.content;
+        this.scannedCourse = Array.from(this.scannedResult).slice(0,7).join("");
         console.log(this.scannedResult);
         this.sendScan();
       }
@@ -85,7 +87,6 @@ export class QrPage implements OnInit, OnDestroy {
   }
 
   async sendScan(){
-    const course = Array.from(this.scannedResult).slice(0,7).join("");
     this.asistenciasService.getUserByCorreo(this.email).subscribe(
       (resp: any)=> {
         const clases = [];
@@ -96,7 +97,7 @@ export class QrPage implements OnInit, OnDestroy {
           let key = Object.keys(resp[0].cursos)[i];
           let value = Object.values(resp[0].cursos)[i];
           c.push(key);
-          if (key == course){
+          if (key == this.scannedCourse){
             let n : number = Number(value);
             c.push(n+1);
             
