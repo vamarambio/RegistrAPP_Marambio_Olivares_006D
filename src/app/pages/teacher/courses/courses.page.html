@@ -13,16 +13,17 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+
+  <ion-card *ngFor="let c of cursos">
     <ion-card-header>
-      <ion-card-title>[PH] CUR1234 - Nombre Curso - 001D</ion-card-title>
+      <ion-card-title>{{c[0]}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <p>[Placeholder] Estudiantes: 5</p>
-      <p>[Placeholder] Clases realizadas: 10</p>
+      <p>Clases realizadas: {{c[1]}}</p>
     </ion-card-content>
-    <ion-button *ngFor="let p of pages" [routerLink]="p.redirect" class="btn" expand="block">
+    <ion-button (click)="setClase(c[0], c[1])" class="btn" expand="block">
       Ver Curso
     </ion-button>
   </ion-card>
+
 </ion-content>

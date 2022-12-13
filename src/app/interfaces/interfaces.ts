@@ -1,3 +1,8 @@
+export interface QrResponse {
+    code: string;
+    name: string;
+}
+
 export interface ResponseHolidays {
     status: string;
     totalResults: number;
@@ -12,7 +17,7 @@ export interface Holiday {
     country: string;
     uuid: string;
     weekday: Weekday;
-}
+} 
 
 export interface Weekday {
     date: Observed;
@@ -22,4 +27,17 @@ export interface Weekday {
 export interface Observed {
     name: string;
     numeric: number;
+}
+
+export interface IAsistencias {
+    id: Number,
+    nombre: String,
+    correo: String,
+    cursos: {}
+}
+
+export interface IAsistencia {
+    nombre: String,
+    correo: String,
+    cursos: {}
 }

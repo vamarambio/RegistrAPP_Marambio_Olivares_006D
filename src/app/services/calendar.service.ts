@@ -15,7 +15,7 @@ export class CalendarService {
     const CALENDAR_REGION = "CL";
     const CALENDAR_YEAR = "2021"
 
-    const API_KEY = environment.apiKey;
+    const API_KEY = environment.calendarApiKey;
 
     const url = `${BASE_URL}/?pretty&country=${CALENDAR_REGION}&year=${CALENDAR_YEAR}&key=${API_KEY}`
 
