@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, LoadingController, InfiniteScrollCustomEvent, NavController } from '@ionic/angular';
-import { throws } from 'assert';
 import { AsistenciasService } from '../../../services/asistencias.service';
 
 

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-import { HttpClient } from '@angular/common/http';
-// import { QrResponse } from 'src/app/interfaces/interfaces';
 
 @Component({
   selector: 'app-class',
@@ -13,12 +11,9 @@ export class ClassPage implements OnInit {
   qrCodeString = '';
   studentsInClass = 0;
 
-  constructor(private menuController: MenuController
-              /* private http: HttpClient */) { }
+  constructor(private menuController: MenuController) { }
 
-  class = {
-    code: '', // Esta pieza de codigo debe variar por la ID de clase creada
-  }
+  class_code = localStorage.getItem("class");
 
   ngOnInit() {
   }
@@ -36,10 +31,6 @@ export class ClassPage implements OnInit {
     const yyyy = date.getFullYear();
 
     const today = yyyy + mm + dd + hh + min;
-    this.qrCodeString = this.class.code + today;
+    this.qrCodeString = this.class_code + today;
   }
-  
-  // async getQRScans() {
-  //   this.http.get("");
-  // }
 }
