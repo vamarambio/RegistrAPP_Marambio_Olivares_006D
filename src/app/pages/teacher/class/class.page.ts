@@ -12,6 +12,7 @@ export class ClassPage implements OnInit {
 
   qrCodeString = '';
   studentsInClass = 0;
+  numClase = localStorage.getItem("numClass");
 
   constructor(private menuController: MenuController
               /* private http: HttpClient */) { }

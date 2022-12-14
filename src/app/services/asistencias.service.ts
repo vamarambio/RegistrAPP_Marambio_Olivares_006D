@@ -30,8 +30,8 @@ export class AsistenciasService {
 
       for (const obj of json) {
           if (!this.isTeacher(obj.correo)) {
-                console.log(obj.correo);
-                alumnos.push(obj);
+            console.log(obj.correo);
+            alumnos.push(obj);
           }
       }
     },
@@ -42,7 +42,8 @@ export class AsistenciasService {
     return alumnos;
   }
 
-  listarCursosProfesor = async() => {
+  // Retorna todos los cursos del usuario actual
+  listarCursosUsuario  = async() => {
     let cursosProf : any = [];
     let json: any;
     this.listarUsuarios().subscribe((data) => { 
@@ -55,13 +56,8 @@ export class AsistenciasService {
 
       for (const obj of json) {
         if (localStorage.getItem("email") == obj.correo) {
-          // var cursos = obj.cursos; //{ cursos: '[{"cur1234":0,"cur5678":0}]' }
-          // console.log(Object.keys(obj)[0]);//id
-          // console.log(Object.keys(obj)[1]);//nombre
           let i = 0;
           while (Object.keys(obj.cursos)[i]) {
-            // console.log(Object.keys(obj.cursos)[i]);
-            // console.log(Object.values(obj.cursos)[i]);
             let c : any = [];
             c.push(Object.keys(obj.cursos)[i]);
             c.push(Object.values(obj.cursos)[i]);
@@ -95,7 +91,6 @@ export class AsistenciasService {
         let i = 0;
         while (Object.keys(obj.cursos)[i]) {
           if (Object.keys(obj.cursos)[i] == curso && !this.isTeacher(obj.correo)) {
-            // console.log(obj);
             cursos.push(obj);
           }
           i = i+1;
