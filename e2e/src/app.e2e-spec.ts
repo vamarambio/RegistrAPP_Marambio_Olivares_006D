@@ -1,7 +1,7 @@
 import { AppPage } from './app.po';
 import { browser, element, by, ExpectedConditions } from 'protractor';
 
-describe('Prueba: ', () => {
+describe('Prueba create-user: ', () => {
   let page: AppPage;
   
   beforeEach(() => {
@@ -12,106 +12,91 @@ describe('Prueba: ', () => {
     browser.manage().window().maximize();
   });
 
-  it('No hay duplicidad', async () => {
+  it('No hay duplicidad', () => {
     browser.waitForAngularEnabled(false);
     page.navigateTo();
 
-    page.clickBoton('create-button-login');
-    await browser.sleep(page.tiempo());
+    browser.executeScript('window.scrollTo(0,document.body.scrollHeight)').then(function(){
+      page.clickBoton('create-button-login');
 
-    element(by.css('ion-input[id="nombre-input-create"] input')).sendKeys('Nombre Profesora');
-    element(by.css('ion-input[id="correo-input-create"] input')).sendKeys('n.profesora@profesor.duoc.cl');
-    element(by.css('ion-input[id="contra-input-create"] input')).sendKeys('1234');
-    element(by.css('ion-input[id="rcontr-input-create"] input')).sendKeys('1234');
-    page.clickBoton('regist-boton-create');
-    await browser.sleep(page.tiempo());
-    
-    // Vuelve al login
-    
-    page.clickBoton('create-button-login');
-    await browser.sleep(page.tiempo());
+      page.llenarCampo("nombre-input-create", "Nombre Profesor");
+      page.llenarCampo("correo-input-create", "n.profesor@profesor.duoc.cl");
+      page.llenarCampo("contra-input-create", "1234");
+      page.llenarCampo("rcontr-input-create", "1234");
+      page.clickBoton('regist-boton-create');
+
+      // Vuelve al login
+
+      browser.executeScript('window.scrollTo(0,document.body.scrollHeight)').then(function(){
+        page.clickBoton('create-button-login');
   
-    element(by.css('ion-input[id="nombre-input-create"] input')).sendKeys('Otro Nombre Profesor');
-    element(by.css('ion-input[id="correo-input-create"] input')).sendKeys('n.profesora@profesor.duoc.cl');
-    element(by.css('ion-input[id="contra-input-create"] input')).sendKeys('123456');
-    element(by.css('ion-input[id="rcontr-input-create"] input')).sendKeys('123456');
-    page.clickBoton('regist-boton-create');
+        page.llenarCampo("nombre-input-create", "Nombre Profesor 2");
+        page.llenarCampo("correo-input-create", "n.profesor@profesor.duoc.cl");
+        page.llenarCampo("contra-input-create", "123");
+        page.llenarCampo("rcontr-input-create", "123");
+        page.clickBoton('regist-boton-create');
   
-    //expect(element(by.css('app-create-user .alert-title sc-ion-alert-md')).getText()).toContain('Este correo ya existe');
-    expect(await element(by.css('ion-alert[class="sc-ion-alert-md-h sc-ion-alert-md-s md hydrated"]')).isPresent()).toBe(true);
-    
+        expect(element(by.css('app-create-user .alert-title sc-ion-alert-md')).getText()).toContain('Este correo ya existe');
+      });
+
+    });
+
   });
 
-
-  it('Crear cuenta con contrasenas incorrectas', async () => {
+  it('Crear cuenta con contrasenas incorrectas', () => {
     browser.waitForAngularEnabled(false);
     page.navigateTo();
-    
-    page.clickBoton('create-button-login');
-    await browser.sleep(page.tiempo());
 
-    element(by.css('ion-input[id="nombre-input-create"] input')).sendKeys('Nombre Profesor');
-    element(by.css('ion-input[id="correo-input-create"] input')).sendKeys('n.profesor@profesor.duoc.cl');
-    element(by.css('ion-input[id="contra-input-create"] input')).sendKeys('1234');
-    element(by.css('ion-input[id="rcontr-input-create"] input')).sendKeys('1111');
+    browser.executeScript('window.scrollTo(0,document.body.scrollHeight)').then(async function(){
+      page.clickBoton('create-button-login');
 
-    await browser.sleep(page.tiempo());
-    page.clickBoton('regist-boton-create'); 
+      page.llenarCampo("nombre-input-create", "Nombre Profesor");
+      page.llenarCampo("correo-input-create", "n.profesor@profesor.duoc.cl");
+      page.llenarCampo("contra-input-create", "1234");
+      page.llenarCampo("rcontr-input-create", "1111");
 
-    expect(await element(by.css('ion-alert[class="sc-ion-alert-md-h sc-ion-alert-md-s md hydrated"]')).isPresent()).toBe(true);
-    
+      page.clickBoton('regist-boton-create');
+
+      expect(await element(by.css('app-create-user .alert-title sc-ion-alert-md')).getText()).toEqual('Las contraseñas no coinciden');
+    });
+
   }); 
-
-
-  it('Crear cuenta valida de profesor y acceder a ella', async () => {
+  
+  it('Crear cuenta valida de profesor y acceder a ella', () => {
     browser.waitForAngularEnabled(false);
     page.navigateTo();
-    page.clickBoton('create-button-login');
-    await browser.sleep(page.tiempo());
 
-    element(by.css('ion-input[id="nombre-input-create"] input')).sendKeys('Nombre Profesor');
-    element(by.css('ion-input[id="correo-input-create"] input')).sendKeys('nom.profesor@profesor.duoc.cl');
-    element(by.css('ion-input[id="contra-input-create"] input')).sendKeys('123');
-    element(by.css('ion-input[id="rcontr-input-create"] input')).sendKeys('123');
-    
-    page.clickBoton('regist-boton-create');
+    browser.executeScript('window.scrollTo(0,document.body.scrollHeight)').then(async function(){
+      page.clickBoton('create-button-login');
 
-    //Vuelve a la pagina login
+      page.llenarCampo("nombre-input-create", "Nombre Profesora");
+      page.llenarCampo("correo-input-create", "nombre.profesora@profesor.duoc.cl");
+      page.llenarCampo("contra-input-create", "12345");
+      page.llenarCampo("rcontr-input-create", "12345");
+      page.clickBoton('regist-boton-create');
 
-    await browser.sleep(page.tiempo());
-    element(by.css('ion-input[id="correo-input-login"] input')).sendKeys('nom.profesor@profesor.duoc.cl');
-    element(by.css('ion-input[id="contra-input-login"] input')).sendKeys('123');
+      //Vuelve a la pagina login
+      page.llenarCampo("correo-input-login", "nombre.profesora@profesor.duoc.cl");
+      page.llenarCampo("contra-input-login", "12345");
+      page.clickBoton('confirm-button-login');
 
-    page.clickBoton('confirm-button-login');
-    await browser.sleep(page.tiempo());
-
-    expect (await element(by.css('ion-label[id="inicio-profesor"]')).getText()).toEqual('Bienvenido/a Nombre Profesor');
+      expect (await element(by.id('inicio-profesor')).getText()).toEqual('Bienvenido/a Nombre Profesora');
+    });
 
   });
 
-  it('Crear cuenta valida de estudiante y acceder a ella', async () => {
+  it('Crear cuenta valida de estudiante y acceder a ella', () => {
     browser.waitForAngularEnabled(false);
     page.navigateTo();
-    page.clickBoton('create-button-login');
-    await browser.sleep(page.tiempo());
 
-    element(by.css('ion-input[id="nombre-input-create"] input')).sendKeys('Nombre Alumno');
-    element(by.css('ion-input[id="correo-input-create"] input')).sendKeys('nombre.alumno@duocuc.cl');
-    element(by.css('ion-input[id="contra-input-create"] input')).sendKeys('12345');
-    element(by.css('ion-input[id="rcontr-input-create"] input')).sendKeys('12345');
-    
-    page.clickBoton('regist-boton-create');
+    element(by.id("email-field-login")).sendKeys("est.estudiante@duocuc.cl");
+    element(by.id("password-field-login")).sendKeys("e");
+    page.clickBoton('confirmar-button-login');
 
-    //Vuelve a la pagina login
 
-    await browser.sleep(page.tiempo());
-    element(by.css('ion-input[id="correo-input-login"] input')).sendKeys('nombre.alumno@duocuc.cl');
-    element(by.css('ion-input[id="contra-input-login"] input')).sendKeys('12345');    
-    page.clickBoton('confirm-button-login');
-    await browser.sleep(page.tiempo());
+    var ini = element(by.id("inicio-student"));
+    expect(await ini.getText()).toEqual("Inicio");
 
-    expect (await element(by.css('ion-label[id="inicio-student"]')).getText()).toEqual('Bienvenido/a Nombre Alumno');
-
-  });
+  })
 
 });

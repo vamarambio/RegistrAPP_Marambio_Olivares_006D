@@ -3,6 +3,9 @@ import { AlertController, NavController } from '@ionic/angular';
 import { RegistroserviceService, Usuario } from '../../services/registroservice.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
+import { IAsistencia } from '../../interfaces/interfaces'
+import { AsistenciasService } from 'src/app/services/asistencias.service';
+
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.page.html',
@@ -12,10 +15,17 @@ export class CreateUserPage implements OnInit {
 
   formularioRegistro: FormGroup; 
   newUsuario: Usuario = <Usuario>{};
-  usuarios: Usuario[] =[]; 
+  usuarios: Usuario[] = []; 
 
+  newUser: IAsistencia = {
+    nombre: "",
+    correo: "",
+    cursos: {}
+  }
+  
   constructor(private alertController: AlertController,
               private registroService: RegistroserviceService,
+              private asistenciasService: AsistenciasService,          
               private navController: NavController, 
               private fb:FormBuilder) { 
                 this.formularioRegistro = this.fb.group({
@@ -43,9 +53,16 @@ export class CreateUserPage implements OnInit {
         this.newUsuario.userPassword = form.contrasena;
         this.newUsuario.rPassword = form.repcontrasena;
 
+        this.newUser = {
+          nombre: form.nombre,
+          correo: form.correo,
+          cursos: { "CUR1234": 0, "CUR5678": 0}
+        }
+        
         this.registroService.getUsers().then(datos=>{
           this.usuarios = datos;
           if (!datos || datos.length == 0) {
+            this.asistenciasService.addUser(this.newUser).subscribe();
             this.registroService.addUser(this.newUsuario).then(dato=>{ 
               this.newUsuario = <Usuario>{};
             });
@@ -59,7 +76,8 @@ export class CreateUserPage implements OnInit {
             if (existe == 1) {
               this.alertMsg("Este correo ya existe")
 
-            } else {
+            } else {              
+              this.asistenciasService.addUser(this.newUser).subscribe();  
               this.registroService.addUser(this.newUsuario).then(dato=>{ 
                 this.newUsuario = <Usuario>{};
                 this.navController.navigateRoot('/login');
