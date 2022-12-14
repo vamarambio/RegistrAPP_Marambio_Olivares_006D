@@ -56,15 +56,19 @@ export class CreateUserPage implements OnInit {
         this.newUser = {
           nombre: form.nombre,
           correo: form.correo,
-          cursos: { "CUR1234": 0, "CUR5678": 0}
+          cursos: {}
         }
         
         this.registroService.getUsers().then(datos=>{
           this.usuarios = datos;
           if (!datos || datos.length == 0) {
-            this.asistenciasService.addUser(this.newUser).subscribe();
+            localStorage.setItem('email', form.correo);
+            localStorage.setItem('name', form.nombre);
+            localStorage.setItem('password', form.contrasena);
+            this.addUserJS(form.correo);
             this.registroService.addUser(this.newUsuario).then(dato=>{ 
               this.newUsuario = <Usuario>{};
+              this.navController.navigateRoot('/set-courses');
             });
             
           } else {
@@ -77,10 +81,23 @@ export class CreateUserPage implements OnInit {
               this.alertMsg("Este correo ya existe")
 
             } else {              
-              this.asistenciasService.addUser(this.newUser).subscribe();  
+              this.addUserJS(form.correo);
               this.registroService.addUser(this.newUsuario).then(dato=>{ 
                 this.newUsuario = <Usuario>{};
-                this.navController.navigateRoot('/login');
+                
+                if(this.isTeacher(form.correo)) {
+                  localStorage.setItem('teacher','true');
+                  this.navController.navigateRoot('t-profile');
+                } else {
+                  localStorage.setItem('student','true');
+                  this.navController.navigateRoot('s-profile');
+                }
+                localStorage.setItem('email', form.correo);
+                localStorage.setItem('name', form.nombre);
+                localStorage.setItem('password', form.contrasena);
+
+                this.navController.navigateRoot('/set-courses');
+                // this.navController.navigateRoot('/login');
               });
             }
           }
@@ -92,6 +109,18 @@ export class CreateUserPage implements OnInit {
     }
   }
 
+  addUserJS(correo: string) {
+    this.asistenciasService.getUserByCorreo(correo).subscribe(
+      (resp) => {
+        let respString = JSON.parse(JSON.stringify(resp));   
+        
+        if(respString.length <= 0) {
+          this.asistenciasService.addUser(this.newUser).subscribe();
+        }
+      }
+    )
+  } 
+
   async alertMsg(msg: string){
     const alert = await this.alertController.create({ 
       header: msg,
@@ -100,4 +129,8 @@ export class CreateUserPage implements OnInit {
     await alert.present();
   }
 
+  isTeacher(email: string) {    
+    var r = new RegExp('^([a-zA-Z0-9_\.]+)@(profesor\.duoc)\.cl$');
+    return r.test(email);
+  }
 }

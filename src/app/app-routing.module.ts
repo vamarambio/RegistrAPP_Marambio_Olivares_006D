@@ -37,7 +37,12 @@ const routes: Routes = [
   {
     path: 'about-us',
     loadChildren: () => import('./pages/about-us/about-us.module').then( m => m.AboutUsPageModule),
+  },  
+  {
+    path: 'set-courses',
+    loadChildren: () => import('./pages/set-courses/set-courses.module').then( m => m.SetCoursesPageModule)
   },
+
   // Rutas de estudiante
   {
     path: 's-profile',
@@ -75,6 +80,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/teacher/class/class.module').then( m => m.ClassPageModule),
     canActivate: [TeacherguardGuard]
   },
+
 
 ];
 

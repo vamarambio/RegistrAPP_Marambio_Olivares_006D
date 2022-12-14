@@ -45,7 +45,6 @@ export class CoursePage implements OnInit {
     }
     
   iniciarClase(){
-    // console.log(this.class);
     this.asistenciasService.getUserByCorreo(this.email).subscribe(
       (resp: any)=> {
         const clases = [];
@@ -68,7 +67,6 @@ export class CoursePage implements OnInit {
         } 
 
         const obj = Object.fromEntries(clases);
-        // console.log(obj);
 
         this.usuario = {
             id: resp[0].id, 
@@ -76,8 +74,6 @@ export class CoursePage implements OnInit {
             correo: resp[0].correo,
             cursos: obj
           }
-          console.log("this.usuario");
-          console.log(this.usuario);
 
           this.asistenciasService.actualizarUser(this.usuario).subscribe();
       })
